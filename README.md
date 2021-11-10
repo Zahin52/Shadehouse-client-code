@@ -1,5 +1,5 @@
-# Destino
-## _The best travelling care in Bangladesh_
+# ShadeHouse
+## _The best sunglass shop in Bangladesh_
 
 
 
@@ -9,10 +9,10 @@
 Feel free to visite our site [Destino](https://destino-7072b.web.app/)
 
 ## Features
-Destino is the best travel site in Bangladesh.
+Destino is The best sunglass shop in Bangladesh.
 
-- Best Plans 
+- Best features 
 - Low cost
 - High ratings
 - Professional stuffs
-- Afordable packages
+- quality glass
