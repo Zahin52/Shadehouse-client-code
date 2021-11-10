@@ -117,7 +117,7 @@ export default function BookingForm() {
                   </div>
                   <div className="col booking-form text-center my-2">
                      <div className="form-header">
-                        <h1>Make your reservation</h1>
+                        <h1>Order your Shade</h1>
                      </div>
                      <form>
                         <div className="row">
