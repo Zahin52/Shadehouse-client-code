@@ -26,10 +26,10 @@ export default function Servicecard({ info }) {
                      to={`/services/${_id}`}
                      className="btn btn-outline-success btn-sm"
                   >
-                     Book Now
+                     Buy Now
                   </NavLink>
                   <a href className="btn btn-outline-danger btn-sm ms-2 ">
-                     ${fee} / P
+                     ${fee}
                   </a>
                </div>
             </div>

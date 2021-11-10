@@ -5,19 +5,19 @@ import './home.css'
 import SelctionContainer from './sectionContainer/selctionContainer'
 
 export default function Home() {
-   const [serviceInfo, setserviceInfo] = useState([])
+   const [productsInfo, setproductsInfo] = useState([])
    const [TestimonyInfo, setTestimonyInfo] = useState([])
    const [gallaryInfo, setgallaryInfo] = useState([])
    const [spinner, setSpinner] = useState(true)
    useEffect(() => {
       try {
-         fetch('https://immense-journey-76103.herokuapp.com/services')
+         fetch('http://localhost:5000/products')
             .then((res) => res.json())
-            .then((data) => setserviceInfo(data))
-         fetch('https://immense-journey-76103.herokuapp.com/testimony')
+            .then((data) => setproductsInfo(data))
+         fetch('http://localhost:5000/reviews')
             .then((res) => res.json())
             .then((data) => setTestimonyInfo(data))
-         fetch('https://immense-journey-76103.herokuapp.com/gallary')
+         fetch('http://localhost:5000/gallary')
             .then((res) => res.json())
             .then((data) => setgallaryInfo(data))
       } catch (error) {
@@ -40,8 +40,8 @@ export default function Home() {
             </div>
          </div>
          <SelctionContainer
-            sectionTitle="Our Destinations"
-            data={serviceInfo}
+            sectionTitle="Our Products"
+            data={productsInfo}
             cardType="1"
          ></SelctionContainer>
          <SelctionContainer
