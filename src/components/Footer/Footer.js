@@ -64,7 +64,7 @@ export default function Footer() {
                   </div>
                </div>
             </div>
-            <p>Copyright &copy;2021 Destino</p>
+            <p>Copyright &copy;2021 ShadeHouse</p>
          </div>
       </div>
    )
