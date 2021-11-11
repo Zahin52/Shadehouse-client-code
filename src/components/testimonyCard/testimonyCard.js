@@ -7,7 +7,7 @@ import StarRatings from 'react-star-ratings'
 export default function TestimonyCard({ info }) {
    //    console.log(info)
     const { name, review, rating } = info
-    console.log(name, review, rating)
+    // console.log(name, review, rating)
     // const rate=rating? rating : 5
    return (
       <div className="col-lg-4 py-3 mx-auto">

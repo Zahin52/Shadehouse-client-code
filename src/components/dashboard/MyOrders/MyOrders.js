@@ -1,20 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Spinner from '../Spinner/Spinner'
-import MyBookingCards from './AllbookingCards/AllBookingCards'
-import useAuth from '../../context/useAuth'
+import Spinner from '../../Spinner/Spinner'
+import MyOrdersCards from './MyOrdersCards/MyOrdersCards'
+import useAuth from '../../../context/useAuth'
 
-export default function MyBookings() {
+export default function MyOrders() {
    const [data, setData] = useState([])
    const [Spinners, setSpinner] = useState(true)
    const { users } = useAuth()
    useEffect(() => {
-      axios
-         .get('https://immense-journey-76103.herokuapp.com/myBookings')
-         .then((res) => {
-            setData(res.data)
-            setSpinner(false)
-         })
+      axios.get('http://localhost:5000/purchase').then((res) => {
+         const data = res.data.filter((item) => item.email === users.email)
+         setData(data)
+         setSpinner(false)
+      })
    }, [data])
    if (Spinners) {
       return <Spinner />
@@ -28,7 +27,7 @@ export default function MyBookings() {
             {data.length < 1 ? (
                <span className="fs-2 text-center"> Sorry ! NO Bookings </span>
             ) : (
-               data.map((item) => <MyBookingCards key={item._id} info={item} />)
+               data.map((item) => <MyOrdersCards key={item._id} info={item} />)
             )}
          </div>
       </div>

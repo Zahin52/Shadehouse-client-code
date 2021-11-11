@@ -1,12 +1,13 @@
 import { Button, TextField, Alert } from '@mui/material'
 import React, { useState } from 'react'
 // import useAuth from './../../../hooks/useAuth'
+import "./makeAdmin.css"
 
 const MakeAdmin = () => {
    const [email, setEmail] = useState('')
    const [success, setSuccess] = useState(false)
-//    const { token } = useAuth()
-const token=""
+   //    const { token } = useAuth()
+   const token = ''
    const handleOnBlur = (e) => {
       setEmail(e.target.value)
    }
@@ -31,21 +32,31 @@ const token=""
       e.preventDefault()
    }
    return (
-      <div>
-         <h2>Make an Admin</h2>
-         <form onSubmit={handleAdminSubmit}>
-            <TextField
-               sx={{ width: '50%' }}
-               label="Email"
-               type="email"
-               onBlur={handleOnBlur}
-               variant="standard"
-            />
-            <Button type="submit" variant="contained">
-               Make Admin
-            </Button>
-         </form>
-         {success && <Alert severity="success">Made Admin successfully!</Alert>}
+      <div className="d-flex justify-content-center">
+         <div
+            className="MakeAdminFormWrapper d-flex flex-column justify-content-center align-items-center"
+            style={{ minHeight: 'calc(100vh - 10rem)' }}
+         >
+            <h2>Make an Admin</h2>
+            <form
+               className="MakeAdmin d-flex flex-column justify-content-center align-items-center w-100"
+               onSubmit={handleAdminSubmit}
+            >
+               <TextField
+                  sx={{ width: '100%', mb: 2 }}
+                  label="Email"
+                  type="email"
+                  onBlur={handleOnBlur}
+                  variant="outlined"
+               />
+               <button className="w-100" type="submit" variant="contained">
+                  Make Admin
+               </button>
+            </form>
+            {success && (
+               <Alert severity="success">Made Admin successfully!</Alert>
+            )}
+         </div>
       </div>
    )
 }

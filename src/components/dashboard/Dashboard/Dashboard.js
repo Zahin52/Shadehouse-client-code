@@ -14,9 +14,12 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import MailIcon from '@material-ui/icons/Mail'
+import PaymentIcon from '@mui/icons-material/Payment'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
+import RateReviewIcon from '@mui/icons-material/RateReview'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
@@ -25,10 +28,11 @@ import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 import { Button } from '@mui/material'
 import DashboardHome from '../DashboardHome/DashboardHome'
 import Payment from '../payment/Pay'
-// import DashboardHome from '../DashboardHome/DashboardHome'
-// import MakeAdmin from '../MakeAdmin/MakeAdmin'
-// import AddDoctor from '../AddDoctor/AddDoctor'
-// import AdminRoute from './../../Login/AdminRoute/AdminRoute'
+import AddReview from '../addReview/AddReview'
+import MyOrders from '../MyOrders/MyOrders'
+import MakeAdmin from '../makeAdmin/MakeAdmin'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
 
 const drawerWidth = 240
 
@@ -71,12 +75,12 @@ function Dashboard(props) {
                }}
                to={`${url}`}
             >
-               <ListItem button key={'Home'}>
+               <ListItem button key={'MyOrder'}>
                   <ListItemIcon sx={{ color: 'white' }}>
-                     <HomeIcon />
+                     <ShoppingCartIcon />
                   </ListItemIcon>
 
-                  <ListItemText primary={'Home'} />
+                  <ListItemText primary={'My Order'} />
                </ListItem>
             </Link>
             <Link
@@ -88,10 +92,10 @@ function Dashboard(props) {
             >
                <ListItem button key={'Pay'}>
                   <ListItemIcon sx={{ color: 'white' }}>
-                     <HomeIcon />
+                     <PaymentIcon />
                   </ListItemIcon>
 
-                  <ListItemText primary={'Pay'} />
+                  <ListItemText primary={'Payment'} />
                </ListItem>
             </Link>
             <Link
@@ -99,14 +103,44 @@ function Dashboard(props) {
                   textDecoration: 'none',
                   color: 'inherit',
                }}
-               to={`${url}/admin`}
+               to={`${url}/review`}
             >
-               <ListItem button key={'Admin'}>
+               <ListItem button key={'Review'}>
                   <ListItemIcon sx={{ color: 'white' }}>
-                     <HomeIcon />
+                     <RateReviewIcon />
                   </ListItemIcon>
 
-                  <ListItemText primary={'Admin'} />
+                  <ListItemText primary={'Review'} />
+               </ListItem>
+            </Link>
+            <Link
+               style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+               }}
+               to={`${url}/makeAdmin`}
+            >
+               <ListItem button key={'makeAdmin'}>
+                  <ListItemIcon sx={{ color: 'white' }}>
+                     <SupervisorAccountIcon />
+                  </ListItemIcon>
+
+                  <ListItemText primary={'Make Admin'} />
+               </ListItem>
+            </Link>
+            <Link
+               style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+               }}
+               to={`${url}/manageAllOrders`}
+            >
+               <ListItem button key={'Manage_All_Orders'}>
+                  <ListItemIcon sx={{ color: 'white' }}>
+                     <ShoppingCartIcon />
+                  </ListItemIcon>
+
+                  <ListItemText primary={'Manage All Orders'} />
                </ListItem>
             </Link>
          </List>
@@ -211,11 +245,25 @@ function Dashboard(props) {
             {/* {console.log(`${path}/admin`)} */}
             <Switch>
                <Route exact path={path}>
-                  <DashboardHome></DashboardHome>
+                  <MyOrders />
+                  {/* <DashboardHome></DashboardHome> */}
                </Route>
                <Route path={`${path}/pay`}>
                   <Payment></Payment>
                </Route>
+               <Route path={`${path}/review`}>
+                  <AddReview />
+               </Route>
+               <Route path={`${path}/Myorders`}>
+                  <MyOrders />
+               </Route>
+               <Route path={`${path}/makeAdmin`}>
+                  <MakeAdmin />
+               </Route>
+               <Route path={`${path}/manageAllOrders`}>
+                  <ManageAllOrders />
+               </Route>
+               
                {/*<Route path={`${path}/admin`}>
                   <Payment></Payment>
                </Route> */}

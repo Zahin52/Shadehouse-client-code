@@ -9,13 +9,13 @@ import Home from './components/Home/Home'
 
 import Notfound from './components/notfound/notfound'
 import Footer from './components/Footer/Footer'
-import AllBookings from './components/AllBooking/Allbookings'
+// import AllBookings from './components/AllBooking/Allbookings'
 
 import Register from './components/register/Register'
 import Login from './components/login/Login'
 import AuthProvider from './context/authProvider'
 import PrivateRoute from './components/privateRoute/PrivateRoute'
-import MyBookings from './components/Mybookings/Mybookings'
+import MyBookings from './components/dashboard/MyOrders/MyOrders'
 import OrderForm from './components/OrderForm/OrderForm'
 import About from './components/about/about'
 import AddDestination from './components/AddDestination/AddDestination'
@@ -43,9 +43,9 @@ function App() {
                   <PrivateRoute exact path="/orders">
                      <Orders />
                   </PrivateRoute>
-                  <PrivateRoute exact path="/allBookings">
+                  {/* <PrivateRoute exact path="/allBookings">
                      <AllBookings />
-                  </PrivateRoute>
+                  </PrivateRoute> */}
                   <PrivateRoute exact path="/services/:id">
                      <OrderForm />
                   </PrivateRoute>
