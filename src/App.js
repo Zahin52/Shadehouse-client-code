@@ -18,7 +18,7 @@ import PrivateRoute from './components/privateRoute/PrivateRoute'
 import MyBookings from './components/dashboard/MyOrders/MyOrders'
 import OrderForm from './components/OrderForm/OrderForm'
 import About from './components/about/about'
-import AddDestination from './components/AddDestination/AddDestination'
+import AddDestination from './components/dashboard/AddProducts/AddProducts'
 import Orders from './components/orders/Orders'
 import ExploreProducts from './components/exploreProducts/ExploreProducts'
 import Dashboard from './components/dashboard/Dashboard/Dashboard';

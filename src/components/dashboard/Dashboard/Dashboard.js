@@ -9,30 +9,32 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
+import BorderColorIcon from '@mui/icons-material/BorderColor'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import MailIcon from '@material-ui/icons/Mail'
+import AutoDeleteIcon from '@mui/icons-material/AutoDelete'
 import PaymentIcon from '@mui/icons-material/Payment'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
 import RateReviewIcon from '@mui/icons-material/RateReview'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import AddIcon from '@mui/icons-material/Add';
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useAuth from '../../../context/useAuth'
-import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
-import { Button } from '@mui/material'
-import DashboardHome from '../DashboardHome/DashboardHome'
+import { Switch, Route,Link, useRouteMatch } from 'react-router-dom'
 import Payment from '../payment/Pay'
 import AddReview from '../addReview/AddReview'
 import MyOrders from '../MyOrders/MyOrders'
 import MakeAdmin from '../makeAdmin/MakeAdmin'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
+import AddProducts from '../AddProducts/AddProducts'
+import ManageProducts from '../ManageProducts/ManageProducts'
+
 
 const drawerWidth = 240
 
@@ -40,8 +42,8 @@ function Dashboard(props) {
    const { window } = props
    const [mobileOpen, setMobileOpen] = React.useState(false)
    const { logout } = useAuth()
-    let { path, url } = useRouteMatch()
-    console.log(path,url);
+   let { path, url } = useRouteMatch()
+   console.log(path, url)
 
    const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen)
@@ -51,8 +53,7 @@ function Dashboard(props) {
       <div style={{ background: 'black !important' }}>
          <Toolbar style={{ background: 'black !important' }} />
          <Divider />
-
-         <List>
+         <list>
             <Link
                style={{
                   textDecoration: 'none',
@@ -137,13 +138,43 @@ function Dashboard(props) {
             >
                <ListItem button key={'Manage_All_Orders'}>
                   <ListItemIcon sx={{ color: 'white' }}>
-                     <ShoppingCartIcon />
+                     <BorderColorIcon />
                   </ListItemIcon>
 
                   <ListItemText primary={'Manage All Orders'} />
                </ListItem>
             </Link>
-         </List>
+            <Link
+               style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+               }}
+               to={`${url}/addProduct`}
+            >
+               <ListItem button key={'Add_product'}>
+                  <ListItemIcon sx={{ color: 'white' }}>
+                     <AddIcon />
+                  </ListItemIcon>
+
+                  <ListItemText primary={'Add Product'} />
+               </ListItem>
+            </Link>
+            <Link
+               style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+               }}
+               to={`${url}/deleteProduct`}
+            >
+               <ListItem button key={'Add_product'}>
+                  <ListItemIcon sx={{ color: 'white' }}>
+                     <AutoDeleteIcon />
+                  </ListItemIcon>
+
+                  <ListItemText primary={'Manage Product'} />
+               </ListItem>
+            </Link>
+         </list>
          <Divider />
          <List>
             {/* <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/"> */}
@@ -263,7 +294,13 @@ function Dashboard(props) {
                <Route path={`${path}/manageAllOrders`}>
                   <ManageAllOrders />
                </Route>
-               
+               <Route path={`${path}/addProduct`}>
+                  <AddProducts />
+               </Route>
+               <Route path={`${path}/deleteProduct`}>
+                  <ManageProducts />
+               </Route>
+
                {/*<Route path={`${path}/admin`}>
                   <Payment></Payment>
                </Route> */}
@@ -288,6 +325,3 @@ Dashboard.propTypes = {
 }
 
 export default Dashboard
-
-
-
