@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceCard from '../../Servicecard/Servicecard'
+import ProductCard from '../../ProductCard/ProductCard'
 import TestimonyCard from '../../testimonyCard/testimonyCard'
 import GallaryCard from '../../gallaryCard/GallaryCard'
 
@@ -8,17 +8,14 @@ export default function selctionContainer({ sectionTitle, data, cardType }) {
       return (
          <div>
             <div className="container">
-               <h1
-                  
-                  className="text-secondary title fw-bold text-capitalize mt-5 mb-4 text-center rounded-pill  py-2 opacity-75"
-               >
+               <h1 className="text-secondary title fw-bold text-capitalize mt-5 mb-4 text-center rounded-pill  py-2 opacity-75">
                   {sectionTitle}
                </h1>
             </div>
             <div id="services" className=" px-4 ">
                <div className="row row-cols-1 row-cols-lg-3  mx-auto justify-content-center">
                   {data.map((data, i) => (
-                     <ServiceCard key={i} info={data} />
+                     <ProductCard key={i} info={data} />
                   ))}
                </div>
             </div>

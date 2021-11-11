@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 import 'font-awesome/css/font-awesome.min.css'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
+import Dashboard from './components/dashboard/Dashboard'
 
 import Notfound from './components/notfound/notfound'
 import Footer from './components/Footer/Footer'
@@ -16,10 +17,11 @@ import Login from './components/login/Login'
 import AuthProvider from './context/authProvider'
 import PrivateRoute from './components/privateRoute/PrivateRoute'
 import MyBookings from './components/Mybookings/Mybookings'
-import BookingForm from './components/BookingForm/BookingForm'
+import OrderForm from './components/OrderForm/OrderForm'
 import About from './components/about/about'
 import AddDestination from './components/AddDestination/AddDestination'
 import Orders from './components/orders/Orders'
+import ExploreProducts from './components/exploreProducts/ExploreProducts'
 
 function App() {
    return (
@@ -34,6 +36,9 @@ function App() {
                   <Route exact path="/about">
                      <About />
                   </Route>
+                  <Route exact path="/exploreProducts">
+                     <ExploreProducts />
+                  </Route>
                   <PrivateRoute exact path="/orders">
                      <Orders />
                   </PrivateRoute>
@@ -41,7 +46,10 @@ function App() {
                      <AllBookings />
                   </PrivateRoute>
                   <PrivateRoute exact path="/services/:id">
-                     <BookingForm />
+                     <OrderForm />
+                  </PrivateRoute>
+                  <PrivateRoute exact path="/dashboard">
+                     <Dashboard />
                   </PrivateRoute>
                   <PrivateRoute exact path="/myBookings">
                      <MyBookings />

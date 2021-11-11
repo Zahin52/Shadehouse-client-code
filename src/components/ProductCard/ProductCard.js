@@ -4,9 +4,9 @@ import 'font-awesome/css/font-awesome.min.css'
 
 import './card.css'
 
-export default function Servicecard({ info }) {
+export default function ProductCard({ info }) {
 //    console.log(info)
-   const { image, title, fee, _id, details } = info
+   const { image, title, fee, _id, model } = info
    return (
       <div className="col h-auto p-2 card-parent rounded-3">
          <div className="card h-100 shadow  pt-3 px-3 mb-3 ">
@@ -14,12 +14,12 @@ export default function Servicecard({ info }) {
                <img src={image} alt="" className="card-img-top" />
             </div>
             <div className="card-body d-flex flex-column">
-               <h5 className="card-title">{title}</h5>
+               <h5 className="card-title text-capitalize">{title}</h5>
                <p
                   className="card-text text-secondary"
                   style={{ 'font-size': '.9rem' }}
                >
-                  {details}
+                  <span>Model No :</span> {model}
                </p>
                <div className=" mt-auto">
                   <NavLink

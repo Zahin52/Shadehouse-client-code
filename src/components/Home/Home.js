@@ -36,12 +36,14 @@ export default function Home() {
                <h1 className="text-capitalize text-center">
                   Welcome to Shadehouse
                </h1>
-               <p className="text-capitalize text-center">Your sun shade solution</p>
+               <p className="text-capitalize text-center">
+                  Your sun shade solution
+               </p>
             </div>
          </div>
          <SelctionContainer
             sectionTitle="Our Products"
-            data={productsInfo}
+            data={productsInfo.slice(0,6)}
             cardType="1"
          ></SelctionContainer>
          <SelctionContainer

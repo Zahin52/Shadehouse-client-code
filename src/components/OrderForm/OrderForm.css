@@ -64,28 +64,31 @@
 }
 
 .booking-form .form-control {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(128, 122, 122, 0.424);
     height: 60px;
     padding: 0px 25px;
     border: none;
     border-radius: 40px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     -webkit-box-shadow: 0px 0px 0px 2px transparent;
     box-shadow: 0px 0px 0px 2px transparent;
     -webkit-transition: 0.2s;
     transition: 0.2s
 }
 
+.form-control::-webkit-input-placeholder {
+    color: rgb(255, 255, 255) !important;
+}
 .booking-form .form-control::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5)
+    color: rgb(255, 255, 255) !important;
 }
 
 .booking-form .form-control:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.5)
+    color: rgb(255, 255, 255) !important;
 }
 
 .booking-form .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5)
+    color: rgb(255, 255, 255) !important;
 }
 
 .booking-form .form-control:focus {

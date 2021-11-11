@@ -39,12 +39,17 @@ export default function Header() {
                   >
                      Home
                   </NavLink>
-                  <NavLink className="nav-link" aria-current="page" to="/about">
+                  <NavLink className="nav-link" to="/exploreProducts">
+                     Explore
+                  </NavLink>
+                  {users?.email && (
+                     <NavLink className="nav-link" to="/dashboard">
+                        Dashboard
+                     </NavLink>
+                  )}
+                  {/* <NavLink className="nav-link" aria-current="page" to="/about">
                      About
                   </NavLink>
-                  <NavHashLink smooth className="nav-link" to="/#services">
-                     Services
-                  </NavHashLink>
                   {users?.email && (
                      <NavLink className="nav-link" to="/allBookings">
                         All Bookings
@@ -59,7 +64,7 @@ export default function Header() {
                      <NavLink className="nav-link " to="/addDestination">
                         Add Destination
                      </NavLink>
-                  )}
+                  )} */}
                   {users?.email && (
                      <span className="text-white p-2 border rounded-pill">
                         {users.displayName}
