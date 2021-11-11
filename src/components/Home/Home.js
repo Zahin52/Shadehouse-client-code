@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Spinner from '../Spinner/Spinner'
 import './home.css'
 import SelctionContainer from './sectionContainer/selctionContainer'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 export default function Home() {
    const [productsInfo, setproductsInfo] = useState([])
@@ -29,33 +31,37 @@ export default function Home() {
    if (spinner) {
      return <Spinner />
    }
-   return (
-      <div>
-         <div className="banner ">
-            <div className="heading d-flex justify-content-center align-items-center flex-column">
-               <h1 className="text-capitalize text-center">
-                  Welcome to Shadehouse
-               </h1>
-               <p className="text-capitalize text-center">
-                  Your sun shade solution
-               </p>
+    return (
+       <div>
+          <Header />
+          <div>
+             <div className="banner ">
+                <div className="heading d-flex justify-content-center align-items-center flex-column">
+                   <h1 className="text-capitalize text-center">
+                      Welcome to Shadehouse
+                   </h1>
+                   <p className="text-capitalize text-center">
+                      Your sun shade solution
+                   </p>
+                </div>
+             </div>
+             <SelctionContainer
+                sectionTitle="Our Products"
+                data={productsInfo.slice(0, 6)}
+                cardType="1"
+             ></SelctionContainer>
+             <SelctionContainer
+                sectionTitle="Gallary"
+                data={gallaryInfo}
+                cardType="3"
+             ></SelctionContainer>
+             <SelctionContainer
+                sectionTitle="Testimony"
+                data={TestimonyInfo}
+                cardType="2"
+             ></SelctionContainer>
             </div>
-         </div>
-         <SelctionContainer
-            sectionTitle="Our Products"
-            data={productsInfo.slice(0,6)}
-            cardType="1"
-         ></SelctionContainer>
-         <SelctionContainer
-            sectionTitle="Gallary"
-            data={gallaryInfo}
-            cardType="3"
-         ></SelctionContainer>
-         <SelctionContainer
-            sectionTitle="Testimony"
-            data={TestimonyInfo}
-            cardType="2"
-         ></SelctionContainer>
-      </div>
-   )
+            <Footer/>
+       </div>
+    )
 }

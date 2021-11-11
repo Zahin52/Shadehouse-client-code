@@ -6,7 +6,6 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 import 'font-awesome/css/font-awesome.min.css'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
-import Dashboard from './components/dashboard/Dashboard'
 
 import Notfound from './components/notfound/notfound'
 import Footer from './components/Footer/Footer'
@@ -22,13 +21,15 @@ import About from './components/about/about'
 import AddDestination from './components/AddDestination/AddDestination'
 import Orders from './components/orders/Orders'
 import ExploreProducts from './components/exploreProducts/ExploreProducts'
+import Dashboard from './components/dashboard/Dashboard/Dashboard';
+import Payment from './components/dashboard/payment/Pay';
 
 function App() {
    return (
       <div className="App">
          <AuthProvider>
             <Router>
-               <Header />
+               {/* <Header /> */}
                <Switch>
                   <Route exact path="/">
                      <Home />
@@ -48,7 +49,7 @@ function App() {
                   <PrivateRoute exact path="/services/:id">
                      <OrderForm />
                   </PrivateRoute>
-                  <PrivateRoute exact path="/dashboard">
+                  <PrivateRoute  path="/dashboard">
                      <Dashboard />
                   </PrivateRoute>
                   <PrivateRoute exact path="/myBookings">
@@ -67,7 +68,7 @@ function App() {
                      <Notfound />
                   </Route>
                </Switch>
-               <Footer />
+               {/* <Footer /> */}
             </Router>
          </AuthProvider>
       </div>
