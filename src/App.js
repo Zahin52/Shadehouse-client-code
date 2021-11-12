@@ -4,13 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import 'font-awesome/css/font-awesome.min.css'
-import Header from './components/Header/Header'
 import Home from './components/Home/Home'
-
 import Notfound from './components/notfound/notfound'
-import Footer from './components/Footer/Footer'
-// import AllBookings from './components/AllBooking/Allbookings'
-
 import Register from './components/register/Register'
 import Login from './components/login/Login'
 import AuthProvider from './context/authProvider'
@@ -19,17 +14,15 @@ import MyBookings from './components/dashboard/MyOrders/MyOrders'
 import OrderForm from './components/OrderForm/OrderForm'
 import About from './components/about/about'
 import AddDestination from './components/dashboard/AddProducts/AddProducts'
-import Orders from './components/orders/Orders'
 import ExploreProducts from './components/exploreProducts/ExploreProducts'
 import Dashboard from './components/dashboard/Dashboard/Dashboard';
-import Payment from './components/dashboard/payment/Pay';
 
 function App() {
    return (
       <div className="App">
          <AuthProvider>
             <Router>
-               {/* <Header /> */}
+               
                <Switch>
                   <Route exact path="/">
                      <Home />
@@ -39,13 +32,7 @@ function App() {
                   </Route>
                   <Route exact path="/exploreProducts">
                      <ExploreProducts />
-                  </Route>
-                  <PrivateRoute exact path="/orders">
-                     <Orders />
-                  </PrivateRoute>
-                  {/* <PrivateRoute exact path="/allBookings">
-                     <AllBookings />
-                  </PrivateRoute> */}
+                  </Route>                 
                   <PrivateRoute exact path="/services/:id">
                      <OrderForm />
                   </PrivateRoute>
@@ -68,7 +55,7 @@ function App() {
                      <Notfound />
                   </Route>
                </Switch>
-               {/* <Footer /> */}
+               
             </Router>
          </AuthProvider>
       </div>

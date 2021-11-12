@@ -12,10 +12,11 @@ export default function Login() {
    const history = useHistory()
    const location = useLocation()
    const redirect = location.state?.from || '/'
-   const { signInUsingGoogle, login } = useAuth()
+   const { signInUsingGoogle, login, saveUserToDb } = useAuth()
    const handleGoogleLogin = () => {
       signInUsingGoogle()
          .then((result) => {
+            saveUserToDb(result.user.email, result.user.displayName, 'put')
             history.push(redirect)
          })
          .catch((e) => setError(e.message))

@@ -35,7 +35,7 @@ import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
 import AddProducts from '../AddProducts/AddProducts'
 import ManageProducts from '../ManageProducts/ManageProducts'
 import Spinner from '../../Spinner/Spinner'
-
+import AdminRoute from '../../privateRoute/AdminRoute'
 const drawerWidth = 240
 
 function Dashboard(props) {
@@ -53,6 +53,7 @@ function Dashboard(props) {
       <div style={{ background: 'black !important' }}>
          <Toolbar style={{ background: 'black !important' }} />
          <Divider />
+
 
          <list>
             <Link
@@ -294,35 +295,20 @@ function Dashboard(props) {
                <Route path={`${path}/review`}>
                   <AddReview />
                </Route>
-               {/* <Route path={`${path}/Myorders`}>
-                  <MyOrders />
-               </Route> */}
-
-               <Route path={`${path}/makeAdmin`}>
+               <AdminRoute path={`${path}/makeAdmin`}>
                   <MakeAdmin />
-               </Route>
-
-               {/* <Route path={`${path}/manageAllOrders`}>
-                  <ManageAllOrders />
-               </Route> */}
-
-               <Route path={`${path}/addProduct`}>
-                  <AddProducts />
-               </Route>
-
-               <Route path={`${path}/deleteProduct`}>
-                  <ManageProducts />
-               </Route>
-
-               {/*<Route path={`${path}/admin`}>
-                  <Payment></Payment>
-               </Route> */}
-               {/* <AdminRoute path={`${path}/makeAdmin`}>
-                  <MakeAdmin></MakeAdmin>
                </AdminRoute>
-               <AdminRoute path={`${path}/addDoctor`}>
-                  <Payment></Payment>
-               </AdminRoute> */}
+    
+
+               <AdminRoute path={`${path}/addProduct`}>
+                  <AddProducts />
+               </AdminRoute>
+
+               <AdminRoute path={`${path}/deleteProduct`}>
+                  <ManageProducts />
+               </AdminRoute>
+
+               
             </Switch>
          </Box>
       </Box>

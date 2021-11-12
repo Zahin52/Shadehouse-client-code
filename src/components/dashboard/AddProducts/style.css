@@ -1,22 +1,22 @@
- ::placeholder {
-  color: rgb(108, 117, 125) !important;
+ .addProduct ::placeholder {
+  color: rgb(56, 56, 56) !important;
   opacity: 1; 
 }
 
-textarea::placeholder {
+.addProduct textarea::placeholder {
    color: rgb(133, 116, 116);
   opacity: 1; 
   font-weight: 100;
   font-family: "Roboto", sans-serif;
   
 }
-.addDestination input, textarea{
+.addProduct input, textarea{
     border:1px solid #d3d3d3;
     margin: 1rem 0;
     color: black;
     
 }
-.addDestination textarea{
+.addProduct textarea{
    
     padding-top: 5%;
     padding-left: 2%;

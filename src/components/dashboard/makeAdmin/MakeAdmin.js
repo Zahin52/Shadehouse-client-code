@@ -2,12 +2,12 @@ import { Button, TextField, Alert } from '@mui/material'
 import React, { useState } from 'react'
 // import useAuth from './../../../hooks/useAuth'
 import './makeAdmin.css'
+import useAuth from '../../../context/useAuth';
 
 const MakeAdmin = () => {
    const [email, setEmail] = useState('')
    const [success, setSuccess] = useState(false)
-   //    const { token } = useAuth()
-   const token = ''
+      const { Token } = useAuth()
    const handleOnBlur = (e) => {
       setEmail(e.target.value)
    }
@@ -16,7 +16,7 @@ const MakeAdmin = () => {
       fetch('http://localhost:5000/user/admin', {
          method: 'PUT',
          headers: {
-            authorization: `Bearer ${token}`,
+            authorization: `Bearer ${Token}`,
             'content-type': 'application/json',
          },
          body: JSON.stringify(user),

@@ -55,7 +55,7 @@ export default function AddProducts() {
 
    return (
       <div
-         className="text-secondary container col-12 col-md-8 addDestination py-5"
+         className="text-secondary container col-12 col-md-8 addProduct py-5"
          style={{ 'min-height': 'calc(100vh - 20rem)' }}
       >
          <div className="text-center">

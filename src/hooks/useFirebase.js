@@ -19,6 +19,7 @@ const useFirebase = () => {
    const [users, setUser] = useState({})
    const [isAdmin, setAdmin] = useState(false)
    const [isLoading, setIsloading] = useState(true)
+   const [Token, setToken] = useState(true)
    const auth = getAuth()
    const signInUsingGoogle = () => {
       setIsloading(true)
@@ -29,7 +30,7 @@ const useFirebase = () => {
    useEffect(() => {
       const unsubscribed = onAuthStateChanged(auth, (user) => {
          if (user) {
-            getIdToken(user).then((res) => localStorage.setItem('idToken', res))
+            getIdToken(user).then((res) => setToken(res))
             setUser(user)
          } else {
             setUser({})
@@ -93,6 +94,7 @@ const useFirebase = () => {
    }
    return {
       users,
+      Token,
       isAdmin,
       signInUsingGoogle,
       logout,

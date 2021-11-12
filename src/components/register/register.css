@@ -164,6 +164,7 @@ input.email, input.text.w3lpass {
 
 .text:focus::-webkit-input-placeholder, .text:valid::-webkit-input-placeholder {
   color: rgb(255, 255, 255) !important;
+  opacity: 1;
   font-size: .9em;
   -webkit-transform: translateY(-30px);
   -moz-transform: translateY(-30px);
