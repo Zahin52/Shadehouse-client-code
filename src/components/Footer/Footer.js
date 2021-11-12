@@ -26,19 +26,19 @@ export default function Footer() {
                   <h1>Contact us</h1>
                   <div>
                      <a
-                        href="https://destino-7072b.web.app/"
+                        href="https://shadehouse-d69c2.web.app/"
                         className="mx-2 text-white"
                      >
                         <i className="fa fa-facebook-square fa-2x"></i>
                      </a>
                      <a
-                        href="https://destino-7072b.web.app/"
+                        href="https://shadehouse-d69c2.web.app/"
                         className="mx-2 text-white"
                      >
                         <i className="fa fa-github-square fa-2x"></i>
                      </a>
                      <a
-                        href="https://destino-7072b.web.app/"
+                        href="https://shadehouse-d69c2.web.app/"
                         className="mx-2 text-white"
                      >
                         <i className="fa fa-twitter-square fa-2x"></i>
