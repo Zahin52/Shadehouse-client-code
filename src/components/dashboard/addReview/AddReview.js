@@ -32,27 +32,27 @@ export default function AddReview() {
    }
    const handleSubmit = () => {
       console.log(review.rating, review.name.length, review.review.length)
-       if ( !review.name.length || !review.review.length) {
-           setMsg({
-              text: 'Please fill the name and review Field',
-              type: 'error',
-           })
-           handleClick()
+      if (!review.name.length || !review.review.length) {
+         setMsg({
+            text: 'Please fill the name and review Field',
+            type: 'error',
+         })
+         handleClick()
          return
       }
-        axios
-           .post('http://localhost:5000/reviews', review)
-           .then((res) => {
-               console.log(res)
-               setMsg({
-                  text: 'Review added successfully',
-                  type: 'success'
-               })
-              handleClick()
-              setReview({ name: '', review: '', rating: 0 })
-              console.log(review)
-           })
-           .catch((err) => alert('something went wrong .Please try again'))
+      axios
+         .post('https://young-garden-78643.herokuapp.com/reviews', review)
+         .then((res) => {
+            console.log(res)
+            setMsg({
+               text: 'Review added successfully',
+               type: 'success',
+            })
+            handleClick()
+            setReview({ name: '', review: '', rating: 0 })
+            console.log(review)
+         })
+         .catch((err) => alert('something went wrong .Please try again'))
    }
    return (
       <div
@@ -104,7 +104,7 @@ export default function AddReview() {
             autoHideDuration={3000}
             onClose={handleClose}
             TransitionComponent={TransitionLeft}
-            anchorOrigin={{vertical: "bottom" , horizontal:"right" }}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
          >
             <Alert
                onClose={handleClose}

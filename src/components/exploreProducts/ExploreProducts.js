@@ -9,7 +9,7 @@ export default function ExploreProducts() {
    const [products, setProducts] = useState([])
    const [loading, setLoading] = useState(true)
    useEffect(() => {
-      fetch('http://localhost:5000/products')
+      fetch('https://young-garden-78643.herokuapp.com/products')
          .then((res) => res.json())
          .then((data) => {
             setProducts(data)

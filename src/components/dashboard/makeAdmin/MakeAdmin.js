@@ -2,18 +2,18 @@ import { Button, TextField, Alert } from '@mui/material'
 import React, { useState } from 'react'
 // import useAuth from './../../../hooks/useAuth'
 import './makeAdmin.css'
-import useAuth from '../../../context/useAuth';
+import useAuth from '../../../context/useAuth'
 
 const MakeAdmin = () => {
    const [email, setEmail] = useState('')
    const [success, setSuccess] = useState(false)
-      const { Token } = useAuth()
+   const { Token } = useAuth()
    const handleOnBlur = (e) => {
       setEmail(e.target.value)
    }
    const handleAdminSubmit = (e) => {
       const user = { email }
-      fetch('http://localhost:5000/user/admin', {
+      fetch('https://young-garden-78643.herokuapp.com/user/admin', {
          method: 'PUT',
          headers: {
             authorization: `Bearer ${Token}`,

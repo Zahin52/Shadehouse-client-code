@@ -41,10 +41,12 @@ const useFirebase = () => {
    }, [])
    useEffect(() => {
       console.log(users.email)
-      axios.get(`http://localhost:5000/user/${users.email}`).then((res) => {
-         console.log(res.data.admin)
-         setAdmin(res.data.admin)
-      })
+      axios
+         .get(`https://young-garden-78643.herokuapp.com/user/${users.email}`)
+         .then((res) => {
+            console.log(res.data.admin)
+            setAdmin(res.data.admin)
+         })
    }, [users])
 
    const logout = () => {
@@ -82,12 +84,12 @@ const useFirebase = () => {
       console.log(user)
       if (type === 'put') {
          axios
-            .put('http://localhost:5000/user', user)
+            .put('https://young-garden-78643.herokuapp.com/user', user)
             .then((res) => console.log('user added'))
             .catch((err) => console.log(err))
       } else {
          axios
-            .post('http://localhost:5000/user', user)
+            .post('https://young-garden-78643.herokuapp.com/user', user)
             .then((res) => console.log('user added'))
             .catch((err) => console.log(err))
       }

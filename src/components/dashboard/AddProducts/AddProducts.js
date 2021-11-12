@@ -33,7 +33,7 @@ export default function AddProducts() {
    const onSubmit = (data) => {
       console.log(data)
       axios
-         .post('http://localhost:5000/products', data)
+         .post('https://young-garden-78643.herokuapp.com/products', data)
          .then((res) => {
             setMsg({
                text: 'Added successfully',

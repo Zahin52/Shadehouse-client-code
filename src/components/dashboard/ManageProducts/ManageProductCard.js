@@ -3,8 +3,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import './manageProductCard.css'
 import axios from 'axios'
 
-
-export default function ManageProductCard({ info,callBack }) {
+export default function ManageProductCard({ info, callBack }) {
    //    console.log(info)
    const { image, title, fee, _id, model } = info
 
@@ -13,7 +12,7 @@ export default function ManageProductCard({ info,callBack }) {
 
       if (confirm) {
          axios
-            .delete(`http://localhost:5000/products/${id}`)
+            .delete(`https://young-garden-78643.herokuapp.com/products/${id}`)
             .then((res) => {
                callBack.setMsg({
                   text: 'Deleted successfully',
@@ -58,7 +57,6 @@ export default function ManageProductCard({ info,callBack }) {
                </div>
             </div>
          </div>
-         
       </div>
    )
 }

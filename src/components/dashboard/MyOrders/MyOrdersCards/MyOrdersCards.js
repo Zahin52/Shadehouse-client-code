@@ -7,9 +7,11 @@ export default function MyOrdersCards({ info, Dataset }) {
    const CancleOrder = (id) => {
       const confirm = window.confirm('Do you want to cancel the Order?')
       if (confirm) {
-         axios.delete(`http://localhost:5000/purchase/${_id}`).then((res) => {
-            console.log(res)
-         })
+         axios
+            .delete(`https://young-garden-78643.herokuapp.com/purchase/${_id}`)
+            .then((res) => {
+               console.log(res)
+            })
       } else {
       }
    }

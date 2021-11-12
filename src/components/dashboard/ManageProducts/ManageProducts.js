@@ -24,7 +24,7 @@ export default function ManageProducts() {
       setOpen(false)
    }
    useEffect(() => {
-      fetch('http://localhost:5000/products')
+      fetch('https://young-garden-78643.herokuapp.com/products')
          .then((res) => res.json())
          .then((data) => {
             setProducts(data)

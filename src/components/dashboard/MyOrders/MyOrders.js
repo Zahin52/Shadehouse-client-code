@@ -9,11 +9,13 @@ export default function MyOrders() {
    const [Spinners, setSpinner] = useState(true)
    const { users } = useAuth()
    useEffect(() => {
-      axios.get('http://localhost:5000/purchase').then((res) => {
-         const data = res.data.filter((item) => item.email === users.email)
-         setData(data)
-         setSpinner(false)
-      })
+      axios
+         .get('https://young-garden-78643.herokuapp.com/purchase')
+         .then((res) => {
+            const data = res.data.filter((item) => item.email === users.email)
+            setData(data)
+            setSpinner(false)
+         })
    }, [data])
    if (Spinners) {
       return <Spinner />

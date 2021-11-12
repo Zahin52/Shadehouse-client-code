@@ -7,17 +7,21 @@ export default function ManageAllOrdersCard({ info }) {
    const CancleOrder = (id) => {
       const confirm = window.confirm('Do you want to cancle the Order?')
       if (confirm) {
-         axios.delete(`http://localhost:5000/purchase/${_id}`).then((res) => {
-            console.log(res)
-         })
+         axios
+            .delete(`https://young-garden-78643.herokuapp.com/purchase/${_id}`)
+            .then((res) => {
+               console.log(res)
+            })
       } else {
       }
    }
    const AcceptOrder = (id) => {
-      const confirm = window.confirm('Do you want to confirm the deliver status?')
+      const confirm = window.confirm(
+         'Do you want to confirm the deliver status?',
+      )
       if (confirm) {
          axios
-            .put(`http://localhost:5000/purchase/${_id}`, {
+            .put(`https://young-garden-78643.herokuapp.com/purchase/${_id}`, {
                status: 'Shipped',
             })
             .then((res) => {
