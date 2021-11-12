@@ -13,8 +13,8 @@ export default function ManageAllOrdersCard({ info }) {
       } else {
       }
    }
-   const AcceptBooking = (id) => {
-      const confirm = window.confirm('Do you want to Accept the Booking?')
+   const AcceptOrder = (id) => {
+      const confirm = window.confirm('Do you want to confirm the deliver status?')
       if (confirm) {
          axios
             .put(`http://localhost:5000/purchase/${_id}`, {
@@ -64,10 +64,10 @@ export default function ManageAllOrdersCard({ info }) {
                   </button>
                   {status === 'pending' ? (
                      <button
-                        onClick={() => AcceptBooking(_id)}
+                        onClick={() => AcceptOrder(_id)}
                         className="btn btn-outline-success col "
                      >
-                        Accept
+                        Deliver
                      </button>
                   ) : (
                      ''

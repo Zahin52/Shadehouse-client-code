@@ -27,7 +27,7 @@ export default function ManageAllOrders() {
             style={{ 'min-height': 'calc(100vh - 292px)' }}
          >
             {data.length < 1 ? (
-               <span className="fs-2 text-center"> Sorry ! NO Bookings </span>
+               <span className="fs-2 text-center"> Sorry ! NO Orders </span>
             ) : (
                data.map((item) => <ManageAllOrdersCard key={item._id} info={item} />)
             )}

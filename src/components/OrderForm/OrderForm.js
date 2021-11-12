@@ -57,7 +57,7 @@ export default function BookingForm() {
             console.log(response)
             if (response.status === 200) {
                alert('Order Done')
-               history.push('/')
+               history.push('/dashboard')
                //    history.push('/myBookings')
             } else {
                alert('Something went wrong while Ordering. Try again')
@@ -93,7 +93,7 @@ export default function BookingForm() {
                                  {details['title']}
                               </h3>
                               <p className="fs-6 text-secondary">
-                                 Model : ${details['model']}
+                                 Model : {details['model']}
                               </p>
                               <p className="px-4 ">{details['details']}</p>
 

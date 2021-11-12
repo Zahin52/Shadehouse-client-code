@@ -7,37 +7,20 @@ export default function Footer() {
       <div className="bg-dark text-white p-4" style={{ 'z-index': '10' }}>
          <div className="container text-center">
             <div className="d-flex flex-column flex-sm-row justify-content-between  mb-3">
-               <div className="">
-                  <ul
-                     style={{ 'list-style-type': 'none' }}
-                     className="text-center fs-4  text-white"
-                  >
+               <div className="text-center">
+                  <div>
+                     <h3 className="text-danger">ShadeHouse</h3>
                      <div>
-                        <NavLink
-                           className="text-decoration-none text-white"
-                           to="/"
-                        >
-                           Home
-                        </NavLink>
+                        <p>
+                           <span>Email:</span>
+                           <span>ShadeHouse@gmail.com</span>
+                        </p>
+                        <p>
+                           <span>Phone:</span>
+                           <span>+880175469854</span>
+                        </p>
                      </div>
-                     <div>
-                        <NavLink
-                           className="text-decoration-none text-white"
-                           to="/about"
-                        >
-                           About
-                        </NavLink>
-                     </div>
-                     <div>
-                        <NavHashLink
-                           smooth
-                           className="nav-link text-white"
-                           to="/#services"
-                        >
-                           Services
-                        </NavHashLink>
-                     </div>
-                  </ul>
+                  </div>
                </div>
 
                <div>
@@ -64,7 +47,7 @@ export default function Footer() {
                   </div>
                </div>
             </div>
-            <p>Copyright &copy;2021 ShadeHouse</p>
+            <p className="text-center">Copyright &copy;2021 ShadeHouse</p>
          </div>
       </div>
    )

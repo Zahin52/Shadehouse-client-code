@@ -34,13 +34,14 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
 import AddProducts from '../AddProducts/AddProducts'
 import ManageProducts from '../ManageProducts/ManageProducts'
+import Spinner from '../../Spinner/Spinner'
 
 const drawerWidth = 240
 
 function Dashboard(props) {
    const { window } = props
    const [mobileOpen, setMobileOpen] = React.useState(false)
-   const { logout, isAdmin } = useAuth()
+   const { logout, isAdmin, isLoading } = useAuth()
    let { path, url } = useRouteMatch()
    console.log(path, url)
    console.log(isAdmin)
@@ -52,7 +53,23 @@ function Dashboard(props) {
       <div style={{ background: 'black !important' }}>
          <Toolbar style={{ background: 'black !important' }} />
          <Divider />
+
          <list>
+            <Link
+               style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+               }}
+               to="/"
+            >
+               <ListItem button key={'Home'}>
+                  <ListItemIcon sx={{ color: 'white' }}>
+                     <HomeIcon />
+                  </ListItemIcon>
+
+                  <ListItemText primary={'Home'} />
+               </ListItem>
+            </Link>
             {isAdmin ? (
                <Box>
                   <Link
@@ -123,21 +140,6 @@ function Dashboard(props) {
                         textDecoration: 'none',
                         color: 'inherit',
                      }}
-                     to="/"
-                  >
-                     <ListItem button key={'Home'}>
-                        <ListItemIcon sx={{ color: 'white' }}>
-                           <HomeIcon />
-                        </ListItemIcon>
-
-                        <ListItemText primary={'Home'} />
-                     </ListItem>
-                  </Link>
-                  <Link
-                     style={{
-                        textDecoration: 'none',
-                        color: 'inherit',
-                     }}
                      to={`${url}`}
                   >
                      <ListItem button key={'MyOrder'}>
@@ -197,6 +199,10 @@ function Dashboard(props) {
    const container =
       window !== undefined ? () => window().document.body : undefined
 
+   if (isLoading) {
+      return <Spinner />
+   }
+   console.log(isAdmin)
    return (
       <Box sx={{ display: 'flex' }}>
          <CssBaseline />
@@ -280,7 +286,7 @@ function Dashboard(props) {
             {/* {console.log(`${path}/admin`)} */}
             <Switch>
                <Route exact path={path}>
-                  {isAdmin ? <MyOrders /> : <ManageAllOrders />}
+                  {!isAdmin ? <MyOrders /> : <ManageAllOrders />}
                </Route>
                <Route path={`${path}/pay`}>
                   <Payment></Payment>

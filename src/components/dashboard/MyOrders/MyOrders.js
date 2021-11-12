@@ -25,7 +25,7 @@ export default function MyOrders() {
             style={{ 'min-height': 'calc(100vh - 292px)' }}
          >
             {data.length < 1 ? (
-               <span className="fs-2 text-center"> Sorry ! NO Bookings </span>
+               <span className="fs-2 text-center"> Sorry ! NO Orders </span>
             ) : (
                data.map((item) => <MyOrdersCards key={item._id} info={item} />)
             )}

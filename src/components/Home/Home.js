@@ -56,7 +56,7 @@ export default function Home() {
                 cardType="3"
              ></SelctionContainer>
              <SelctionContainer
-                sectionTitle="Testimony"
+                sectionTitle="Review"
                 data={TestimonyInfo}
                 cardType="2"
              ></SelctionContainer>
