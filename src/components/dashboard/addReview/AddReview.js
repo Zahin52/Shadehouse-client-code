@@ -32,9 +32,9 @@ export default function AddReview() {
    }
    const handleSubmit = () => {
       console.log(review.rating, review.name.length, review.review.length)
-       if (!review.rating || !review.name.length || !review.review.length) {
+       if ( !review.name.length || !review.review.length) {
            setMsg({
-              text: 'Please fill all the Field',
+              text: 'Please fill the name and review Field',
               type: 'error',
            })
            handleClick()
