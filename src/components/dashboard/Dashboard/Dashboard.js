@@ -21,11 +21,11 @@ import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
 import RateReviewIcon from '@mui/icons-material/RateReview'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from '@mui/icons-material/Add'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useAuth from '../../../context/useAuth'
-import { Switch, Route,Link, useRouteMatch } from 'react-router-dom'
+import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 import Payment from '../payment/Pay'
 import AddReview from '../addReview/AddReview'
 import MyOrders from '../MyOrders/MyOrders'
@@ -35,16 +35,15 @@ import ManageAllOrders from '../ManageAllOrders/ManageAllOrders'
 import AddProducts from '../AddProducts/AddProducts'
 import ManageProducts from '../ManageProducts/ManageProducts'
 
-
 const drawerWidth = 240
 
 function Dashboard(props) {
    const { window } = props
    const [mobileOpen, setMobileOpen] = React.useState(false)
-   const { logout } = useAuth()
+   const { logout, isAdmin } = useAuth()
    let { path, url } = useRouteMatch()
    console.log(path, url)
-
+   console.log(isAdmin)
    const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen)
    }
@@ -54,130 +53,136 @@ function Dashboard(props) {
          <Toolbar style={{ background: 'black !important' }} />
          <Divider />
          <list>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to="/"
-            >
-               <ListItem button key={'Home'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <HomeIcon />
-                  </ListItemIcon>
+            {isAdmin ? (
+               <Box>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}/makeAdmin`}
+                  >
+                     <ListItem button key={'makeAdmin'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <SupervisorAccountIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Home'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}`}
-            >
-               <ListItem button key={'MyOrder'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <ShoppingCartIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Make Admin'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}`}
+                  >
+                     <ListItem button key={'Manage_All_Orders'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <BorderColorIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'My Order'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/pay`}
-            >
-               <ListItem button key={'Pay'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <PaymentIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Manage All Orders'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}/addProduct`}
+                  >
+                     <ListItem button key={'Add_product'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <AddIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Payment'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/review`}
-            >
-               <ListItem button key={'Review'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <RateReviewIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Add Product'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}/deleteProduct`}
+                  >
+                     <ListItem button key={'Add_product'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <AutoDeleteIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Review'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/makeAdmin`}
-            >
-               <ListItem button key={'makeAdmin'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <SupervisorAccountIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Manage Product'} />
+                     </ListItem>
+                  </Link>
+               </Box>
+            ) : (
+               <Box>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to="/"
+                  >
+                     <ListItem button key={'Home'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <HomeIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Make Admin'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/manageAllOrders`}
-            >
-               <ListItem button key={'Manage_All_Orders'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <BorderColorIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Home'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}`}
+                  >
+                     <ListItem button key={'MyOrder'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <ShoppingCartIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Manage All Orders'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/addProduct`}
-            >
-               <ListItem button key={'Add_product'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <AddIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'My Order'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}/pay`}
+                  >
+                     <ListItem button key={'Pay'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <PaymentIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Add Product'} />
-               </ListItem>
-            </Link>
-            <Link
-               style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-               }}
-               to={`${url}/deleteProduct`}
-            >
-               <ListItem button key={'Add_product'}>
-                  <ListItemIcon sx={{ color: 'white' }}>
-                     <AutoDeleteIcon />
-                  </ListItemIcon>
+                        <ListItemText primary={'Payment'} />
+                     </ListItem>
+                  </Link>
+                  <Link
+                     style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                     }}
+                     to={`${url}/review`}
+                  >
+                     <ListItem button key={'Review'}>
+                        <ListItemIcon sx={{ color: 'white' }}>
+                           <RateReviewIcon />
+                        </ListItemIcon>
 
-                  <ListItemText primary={'Manage Product'} />
-               </ListItem>
-            </Link>
+                        <ListItemText primary={'Review'} />
+                     </ListItem>
+                  </Link>
+               </Box>
+            )}
          </list>
          <Divider />
          <List>
-            {/* <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/"> */}
             <ListItem button key={'Logout'} onClick={logout}>
                <ListItemIcon sx={{ color: 'white' }}>
                   <ExitToAppIcon />
@@ -185,7 +190,6 @@ function Dashboard(props) {
 
                <ListItemText primary={'Logout'} />
             </ListItem>
-            {/* </Link> */}
          </List>
       </div>
    )
@@ -276,8 +280,7 @@ function Dashboard(props) {
             {/* {console.log(`${path}/admin`)} */}
             <Switch>
                <Route exact path={path}>
-                  <MyOrders />
-                  {/* <DashboardHome></DashboardHome> */}
+                  {isAdmin ? <MyOrders /> : <ManageAllOrders />}
                </Route>
                <Route path={`${path}/pay`}>
                   <Payment></Payment>
@@ -285,18 +288,22 @@ function Dashboard(props) {
                <Route path={`${path}/review`}>
                   <AddReview />
                </Route>
-               <Route path={`${path}/Myorders`}>
+               {/* <Route path={`${path}/Myorders`}>
                   <MyOrders />
-               </Route>
+               </Route> */}
+
                <Route path={`${path}/makeAdmin`}>
                   <MakeAdmin />
                </Route>
-               <Route path={`${path}/manageAllOrders`}>
+
+               {/* <Route path={`${path}/manageAllOrders`}>
                   <ManageAllOrders />
-               </Route>
+               </Route> */}
+
                <Route path={`${path}/addProduct`}>
                   <AddProducts />
                </Route>
+
                <Route path={`${path}/deleteProduct`}>
                   <ManageProducts />
                </Route>

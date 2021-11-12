@@ -13,7 +13,8 @@ export default function Register() {
    const history = useHistory()
    const location = useLocation()
    const redirect = location.state?.from || '/'
-   const { signInUsingGoogle, createNewUser, setUserName } = useAuth()
+   const { signInUsingGoogle, createNewUser, setUserName, saveUserToDb } =
+      useAuth()
 
    const handleCreateUser = (e) => {
       e.preventDefault()
@@ -22,13 +23,16 @@ export default function Register() {
          return
       }
       createNewUser({ email, pass }).then(() => {
+         saveUserToDb(email, name, 'post')
          setUserName(name, history)
       })
    }
 
    const handleGoogleLogin = () => {
       signInUsingGoogle()
-         .then((result) => {
+          .then((result) => {
+             console.log(result.user.email, result.user.displayName)
+            saveUserToDb(result.user.email, result.user.displayName, 'put')
             history.push(redirect)
          })
          .catch((e) => setError(e.message))

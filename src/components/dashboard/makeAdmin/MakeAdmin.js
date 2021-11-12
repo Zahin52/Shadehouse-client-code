@@ -1,7 +1,7 @@
 import { Button, TextField, Alert } from '@mui/material'
 import React, { useState } from 'react'
 // import useAuth from './../../../hooks/useAuth'
-import "./makeAdmin.css"
+import './makeAdmin.css'
 
 const MakeAdmin = () => {
    const [email, setEmail] = useState('')
@@ -13,7 +13,7 @@ const MakeAdmin = () => {
    }
    const handleAdminSubmit = (e) => {
       const user = { email }
-      fetch('https://stark-caverns-04377.herokuapp.com/users/admin', {
+      fetch('http://localhost:5000/user/admin', {
          method: 'PUT',
          headers: {
             authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ const MakeAdmin = () => {
                onSubmit={handleAdminSubmit}
             >
                <TextField
-                  sx={{ width: '100%', mb: 2 }}
+                  sx={{ width: '100%', mb: 2, input: { color: '#000' } }}
                   label="Email"
                   type="email"
                   onBlur={handleOnBlur}

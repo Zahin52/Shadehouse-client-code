@@ -12,10 +12,12 @@ import { useState, useEffect } from 'react'
 
 import initializationAuthentication from '../firebase/firebase.init'
 import { updateProfile } from '@firebase/auth'
+import axios from 'axios'
 
 initializationAuthentication()
 const useFirebase = () => {
    const [users, setUser] = useState({})
+   const [isAdmin, setAdmin] = useState(false)
    const [isLoading, setIsloading] = useState(true)
    const auth = getAuth()
    const signInUsingGoogle = () => {
@@ -23,6 +25,7 @@ const useFirebase = () => {
       const GoogleProvider = new GoogleAuthProvider()
       return signInWithPopup(auth, GoogleProvider)
    }
+
    useEffect(() => {
       const unsubscribed = onAuthStateChanged(auth, (user) => {
          if (user) {
@@ -35,6 +38,13 @@ const useFirebase = () => {
       })
       return () => unsubscribed
    }, [])
+   useEffect(() => {
+      console.log(users.email)
+      axios.get(`http://localhost:5000/user/${users.email}`).then((res) => {
+         console.log(res.data.admin)
+         setAdmin(res.data.admin)
+      })
+   }, [users])
 
    const logout = () => {
       setIsloading(true)
@@ -57,23 +67,40 @@ const useFirebase = () => {
    }
 
    const createNewUser = ({ email, pass }) => {
-      return createUserWithEmailAndPassword(auth, email, pass).finally(() =>
-         setIsloading(false),
-      )
+      return createUserWithEmailAndPassword(auth, email, pass).finally(() => {
+         setIsloading(false)
+      })
    }
    const login = ({ email, pass }) => {
       setIsloading(true)
       console.log(email, pass)
       return signInWithEmailAndPassword(auth, email, pass)
    }
+   const saveUserToDb = (email, displayName, type) => {
+      const user = { email, displayName }
+      console.log(user)
+      if (type === 'put') {
+         axios
+            .put('http://localhost:5000/user', user)
+            .then((res) => console.log('user added'))
+            .catch((err) => console.log(err))
+      } else {
+         axios
+            .post('http://localhost:5000/user', user)
+            .then((res) => console.log('user added'))
+            .catch((err) => console.log(err))
+      }
+   }
    return {
       users,
+      isAdmin,
       signInUsingGoogle,
       logout,
       isLoading,
       createNewUser,
       login,
       setUserName,
+      saveUserToDb,
    }
 }
 
