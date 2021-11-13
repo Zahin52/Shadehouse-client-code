@@ -1,11 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { NavHashLink } from 'react-router-hash-link'
 import useAuth from '../../context/useAuth'
 
 export default function Header() {
    const { users, logout } = useAuth()
    //    console.log(users)
+    const history=useHistory()
    return (
       <nav
          className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark "
@@ -47,24 +48,7 @@ export default function Header() {
                         Dashboard
                      </NavLink>
                   )}
-                  {/* <NavLink className="nav-link" aria-current="page" to="/about">
-                     About
-                  </NavLink>
-                  {users?.email && (
-                     <NavLink className="nav-link" to="/allBookings">
-                        All Bookings
-                     </NavLink>
-                  )}
-                  {users?.email && (
-                     <NavLink className="nav-link " to="/myBookings">
-                        My Bookings
-                     </NavLink>
-                  )}
-                  {users?.email && (
-                     <NavLink className="nav-link " to="/addDestination">
-                        Add Destination
-                     </NavLink>
-                  )} */}
+
                   {users?.email && (
                      <span className="text-white p-2 border rounded-pill">
                         {users.displayName}
@@ -72,7 +56,10 @@ export default function Header() {
                   )}
                   {users?.email ? (
                      <NavLink className="nav-link " to="/">
-                        <button onClick={logout} className="btn btn-primary">
+                        <button
+                           onClick={() => logout(history)}
+                           className="btn btn-primary"
+                        >
                            logout
                         </button>
                      </NavLink>

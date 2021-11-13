@@ -4,9 +4,15 @@ import SendIcon from '@mui/icons-material/Send'
 import './addReview.css'
 import axios from 'axios'
 import Slide from '@mui/material/Slide'
+import useAuth from '../../../context/useAuth'
 
 export default function AddReview() {
-   const [review, setReview] = useState({ name: '', review: '', rating: 0 })
+   const { users } = useAuth()
+   const [review, setReview] = useState({
+      name: users.displayName,
+      review: '',
+      rating: 0,
+   })
    const changeHandle = (e) => {
       let result = { ...review }
       const field = e.target.name
@@ -49,7 +55,7 @@ export default function AddReview() {
                type: 'success',
             })
             handleClick()
-            setReview({ name: '', review: '', rating: 0 })
+            setReview({ name: users.displayName, review: '', rating: 0 })
             console.log(review)
          })
          .catch((err) => alert('something went wrong .Please try again'))
@@ -64,6 +70,7 @@ export default function AddReview() {
          </h3>
          <div className="d-flex flex-column justify-content-evenly container h-100 addReview">
             <TextField
+               disabled
                onChange={changeHandle}
                id="name"
                value={review?.name}

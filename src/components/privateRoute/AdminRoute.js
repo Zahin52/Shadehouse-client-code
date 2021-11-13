@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import useAuth from '../../context/useAuth';
 import Spinner from '../Spinner/Spinner';
 
 
 export default function AdminRoute({ children, ...rest }) {
-   const { users, isLoading ,isAdmin} = useAuth()
-   if (isLoading) {
+    const [loading,setLoading]=useState(true)
+    const { users, isLoading, isAdmin } = useAuth()
+    useEffect(() => {
+        setLoading(!isAdmin)
+    }, [isAdmin])
+   if (loading) {
       return <Spinner />
    }
    return (
       <Route
          {...rest}
          render={({ location }) =>
-            users?.email && isAdmin ? (
+            isAdmin ? (
                children
             ) : (
                <Redirect

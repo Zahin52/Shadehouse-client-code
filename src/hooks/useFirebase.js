@@ -21,6 +21,7 @@ const useFirebase = () => {
    const [isLoading, setIsloading] = useState(true)
    const [Token, setToken] = useState(true)
    const auth = getAuth()
+
    const signInUsingGoogle = () => {
       setIsloading(true)
       const GoogleProvider = new GoogleAuthProvider()
@@ -49,11 +50,13 @@ const useFirebase = () => {
          })
    }, [users])
 
-   const logout = () => {
+   const logout = (history) => {
       setIsloading(true)
       signOut(auth)
          .then((res) => {
-            setUser({})
+             setUser({})
+             history.push("/")
+            
          })
          .finally(() => setIsloading(false))
    }

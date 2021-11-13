@@ -25,7 +25,7 @@ import AddIcon from '@mui/icons-material/Add'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useAuth from '../../../context/useAuth'
-import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
+import { Switch, Route, Link, useRouteMatch,useHistory } from 'react-router-dom'
 import Payment from '../payment/Pay'
 import AddReview from '../addReview/AddReview'
 import MyOrders from '../MyOrders/MyOrders'
@@ -48,11 +48,12 @@ function Dashboard(props) {
    const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen)
    }
-
+   const history=useHistory()
    const drawer = (
       <div style={{ background: 'black !important' }}>
          <Toolbar style={{ background: 'black !important' }} />
-         <Divider />
+         <Divider />import { useHistory } 
+
 
 
          <list>
@@ -186,7 +187,7 @@ function Dashboard(props) {
          </list>
          <Divider />
          <List>
-            <ListItem button key={'Logout'} onClick={logout}>
+            <ListItem button key={'Logout'} onClick={()=>logout(history)}>
                <ListItemIcon sx={{ color: 'white' }}>
                   <ExitToAppIcon />
                </ListItemIcon>
@@ -295,6 +296,7 @@ function Dashboard(props) {
                <Route path={`${path}/review`}>
                   <AddReview />
                </Route>
+               
                <AdminRoute path={`${path}/makeAdmin`}>
                   <MakeAdmin />
                </AdminRoute>
