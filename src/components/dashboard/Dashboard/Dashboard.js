@@ -36,6 +36,7 @@ import AddProducts from '../AddProducts/AddProducts'
 import ManageProducts from '../ManageProducts/ManageProducts'
 import Spinner from '../../Spinner/Spinner'
 import AdminRoute from '../../privateRoute/AdminRoute'
+import Notfound from '../../notfound/notfound'
 const drawerWidth = 240
 
 function Dashboard(props) {
@@ -52,7 +53,7 @@ function Dashboard(props) {
    const drawer = (
       <div style={{ background: 'black !important' }}>
          <Toolbar style={{ background: 'black !important' }} />
-         <Divider />import { useHistory } 
+         <Divider />
 
 
 
@@ -285,32 +286,32 @@ function Dashboard(props) {
             }}
          >
             <Toolbar />
-            {/* {console.log(`${path}/admin`)} */}
+            
             <Switch>
                <Route exact path={path}>
                   {!isAdmin ? <MyOrders /> : <ManageAllOrders />}
                </Route>
-               <Route path={`${path}/pay`}>
+               <Route exact path={`${path}/pay`}>
                   <Payment></Payment>
                </Route>
-               <Route path={`${path}/review`}>
+               <Route exact path={`${path}/review`}>
                   <AddReview />
                </Route>
-               
-               <AdminRoute path={`${path}/makeAdmin`}>
+
+               <AdminRoute exact path={`${path}/makeAdmin`}>
                   <MakeAdmin />
                </AdminRoute>
-    
 
-               <AdminRoute path={`${path}/addProduct`}>
+               <AdminRoute exact path={`${path}/addProduct`}>
                   <AddProducts />
                </AdminRoute>
 
-               <AdminRoute path={`${path}/deleteProduct`}>
+               <AdminRoute exact path={`${path}/deleteProduct`}>
                   <ManageProducts />
                </AdminRoute>
-
-               
+               <Route  path={`${path}/*`}>
+                  <Notfound/>
+               </Route>
             </Switch>
          </Box>
       </Box>
