@@ -7,9 +7,11 @@
 ## Live link
 
 Feel free to visite our site [ShadeHouse](https://shadehouse-d69c2.web.app/)
-
+## Admin Credentials
+username=admin@admin.com
+pass=123456
 ## Features
-Destino is The best sunglass shop in Bangladesh.
+ShadeHouse is The best sunglass shop in Bangladesh.
 
 - Best features 
 - Low cost
