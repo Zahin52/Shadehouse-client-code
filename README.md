@@ -7,7 +7,7 @@
 ## Live link
 
 Feel free to visite our site [ShadeHouse](https://shadehouse-d69c2.web.app/)
-##Admin Credentials
+## Admin Credentials
 username=admin@admin.com
 pass=123456
 ## Features
